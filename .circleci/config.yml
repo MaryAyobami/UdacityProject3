@@ -72,7 +72,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - restore-cache:
+      - restore_cache:
           keys: [frontend-build]
       - run:
           cd frontend
@@ -84,7 +84,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - restore-cache:
+      - restore_cache:
           keys: [backend-build]
       - run:
           cd backend
