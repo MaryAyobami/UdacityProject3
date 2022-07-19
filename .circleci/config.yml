@@ -100,7 +100,8 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - restore_cache: [frontend-build]
+      - restore_cache:
+          keys: [frontend-build]
       - run:
           name: Run frontend scan
           command: |
@@ -113,7 +114,8 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - restore_cache: [backend-build]
+      - restore_cache: 
+          keys: [backend-build]
       - run:
           name: Run backend scan
           command: |
