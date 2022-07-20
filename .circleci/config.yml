@@ -201,7 +201,7 @@ jobs:
           command: |
             sudo apt install -y tar gzip curl
             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-            unzip -qq awscl00000000000iv2.zip
+            unzip -qq awcliv2.zip
             sudo ./aws/install
       - restore_cache:
           keys: [backend-build]
@@ -291,13 +291,14 @@ jobs:
                     
   # smoke-test:
   #   docker:
-  #     # Lightweight Docker image 
+  #     - image: python:3.7-alpine3.16
+
   #   steps:
-  #     # Checkout code from git
+  #     - checkout
   #     - run:
   #         name: Install dependencies
   #         command: |
-  #           # your code here
+  #             apk add --update --no-cache tar gzip nodejs npm aws-cli curl
   #     - run:
   #         name: Get backend url
   #         command: |
