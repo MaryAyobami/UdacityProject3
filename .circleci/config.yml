@@ -175,7 +175,9 @@ jobs:
     steps:
       - checkout 
       - add_ssh_keys:
-          fingerprints: 'bb:cb:a3:ae:d4:9d:c6:30:45:c5:9f:82:d4:93:9b:a1'
+          fingerprints: 'ee:67:44:06:de:b5:8a:4e:1c:42:46:8c:66:30:a7:ca'
+
+
     
       - run:
           name: Install dependencies
@@ -209,7 +211,7 @@ jobs:
           name: Run migrations
           command: |
             cd backend
-            npm run migrations > ~/project/backend/migrations.txt
+            npm run migrations > migrations.txt
       - run:
           name: Send migration status to kvdb
           command: |
@@ -262,7 +264,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: 'bb:cb:a3:ae:d4:9d:c6:30:45:c5:9f:82:d4:93:9b:a1'
+          fingerprints: 'ee:67:44:06:de:b5:8a:4e:1c:42:46:8c:66:30:a7:ca'
       - attach_workspace:
           at: ~/
       - restore_cache: 
