@@ -1,12 +1,12 @@
 ---
-- name: update and upgrade dependencies
+- name: "update and upgrade dependencies"
   become: yes
   apt:
     upgrade: yes
     update_cache: yes
     cache_valid_time: 86400
 
-- name: remove unneccessary dependencies
+- name: "remove unneccessary dependencies"
   become: yes
   apt: 
     autoremove: yes
@@ -26,13 +26,13 @@
     production: yes
     state: latest
 
-- name: extract artifact
+- name: "extract artifact"
   become: yes
   unarchive: 
     src: files/artifact.tar.gz
     dest: .
 
-- name: start app
+- name: "start app"
   become: yes
   shell: |
     pm2 delete all
