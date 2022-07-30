@@ -221,7 +221,8 @@ jobs:
             echo TYPEORM_USERNAME=$TYPEORM_USERNAME >> ~/project/backend/.env
             cat ~/project/backend/.env
             cd .circleci/ansible
-            ansible-playbook -i inventory.txt configure-server.yml
+            ansible-playbook -i inventory.txt configure-server.yml \
+            --key-file ~/.ssh/id_rsa_ee674406deb58a4e1c42468c6630a7ca -vvvv
 
       - persist_to_workspace:
           root: ~/
@@ -374,10 +375,10 @@ jobs:
             else
               return 1
             fi
-      - destroy-environment: 
-          workflow_id:  ${CIRCLE_WORKFLOW_ID:0:7}      
-      - revert-migrations: 
-          workflow_id:  ${CIRCLE_WORKFLOW_ID:0:7}
+      # - destroy-environment: 
+      #     workflow_id:  ${CIRCLE_WORKFLOW_ID:0:7}      
+      # - revert-migrations: 
+      #     workflow_id:  ${CIRCLE_WORKFLOW_ID:0:7}
 
   cloudfront-update:
     docker:
