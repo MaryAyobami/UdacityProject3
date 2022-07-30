@@ -223,7 +223,7 @@ jobs:
             cd .circleci/ansible
             ansible-playbook -i inventory.txt configure-server.yml
 
-       - persist_to_workspace:
+      - persist_to_workspace:
           root: ~/
           paths:
             - project/backend
