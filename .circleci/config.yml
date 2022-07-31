@@ -199,7 +199,7 @@ jobs:
     steps:
       - checkout 
       - add_ssh_keys:
-          fingerprints: 'ee:67:44:06:de:b5:8a:4e:1c:42:46:8c:66:30:a7:ca'
+          fingerprints: '7b:68:52:03:41:d0:8a:ae:36:21:55:f6:2f:49:0f:82'
       - run:
           name: Install dependencies
           command: |
@@ -222,7 +222,7 @@ jobs:
             cat ~/project/backend/.env
             cd .circleci/ansible
             ansible-playbook -i inventory.txt configure-server.yml \
-            --key-file ~/.ssh/id_rsa_ee674406deb58a4e1c42468c6630a7ca -vvvv
+            --key-file ~/.ssh/id_rsa_7b68520341d08aae362155f62f490f82 -vvvv
 
       - persist_to_workspace:
           root: ~/
@@ -310,7 +310,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: 'ee:67:44:06:de:b5:8a:4e:1c:42:46:8c:66:30:a7:ca'
+          fingerprints: '7b:68:52:03:41:d0:8a:ae:36:21:55:f6:2f:49:0f:82'
       - attach_workspace:
           at: ~/
       - restore_cache: 
