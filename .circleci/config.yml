@@ -333,7 +333,6 @@ jobs:
             cp ~/project/backend/.env .circleci/ansible/roles/deploy/files/backend.env
             cd .circleci/ansible
             cat inventory.txt
-            ansible-galaxy install weareinteractive.environment
             ansible-playbook -i inventory.txt deploy-backend.yml \
             --key-file ~/.ssh/id_rsa_7b68520341d08aae362155f62f490f82 -vvvv
             
