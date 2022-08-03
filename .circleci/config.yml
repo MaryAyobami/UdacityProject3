@@ -334,7 +334,7 @@ jobs:
             cd .circleci/ansible
             cat inventory.txt
             ansible-playbook -i inventory.txt deploy-backend.yml \
-            --key-file ~/.ssh/id_rsa_7b68520341d08aae362155f62f490f82 -vvvv
+            
             
       - destroy-environment: 
           workflow_id:  ${CIRCLE_WORKFLOW_ID:0:7}      
