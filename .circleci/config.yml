@@ -333,7 +333,7 @@ jobs:
             cp ~/project/backend/.env .circleci/ansible/roles/deploy/files/backend.env
             cd .circleci/ansible
             cat inventory.txt
-            ansible-playbook -i inventory.txt deploy-backend.yml \
+            ansible-playbook -i inventory.txt deploy-backend.yml 
             
             
       - destroy-environment: 
@@ -356,6 +356,7 @@ jobs:
       - run:
           name: Backend smoke test.
           command: |
+            sleep 60
             export BACKEND_IP=$(aws ec2 describe-instances \
             --query 'Reservations[*].Instances[*].PublicIpAddress'  \
             --filters Name=tag:aws:cloudformation:stack-name,Values=udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7} \
