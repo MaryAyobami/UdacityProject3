@@ -221,9 +221,8 @@ jobs:
             echo TYPEORM_USERNAME=$TYPEORM_USERNAME >> ~/project/backend/.env
             cat ~/project/backend/.env
             cd .circleci/ansible
-            ansible-playbook -i inventory.txt configure-server.yml \
-            --key-file ~/.ssh/id_rsa_bcec3f6521d7945b1ac2bb44855a9a06-vvvv
-
+            ansible-playbook -i inventory.txt configure-server.yml 
+            
       - persist_to_workspace:
           root: ~/
           paths:
