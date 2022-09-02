@@ -391,22 +391,21 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            yum -y install npm nodejs tar gzip curl
+            yum -y install npm nodejs tar gzip
       - run:
           name: Update Cloudfront 
           command: |
-            export OldWorkflowID=$(aws cloudformation list-exports \
-            --query "Exports[?Name==\`Cloudfront-${CIRCLE_WORKFLOW_ID:0:7}\`].Value" \
-            --no-paginate --output text)
-            echo $OldWorkflowID >> ~/OldWorkflowID.txt
-            cat ~/OldWorkflowID.txt
+            export OldWorkflowID=$(aws cloudformation \
+              list-exports --query "Exports[?Name=='WorkflowID'].Value" \
+              --output text)
+            export STACKS=($(aws cloudformation list-stacks --query "StackSummaries[*].StackName" \
+              --stack-status-filter CREATE_COMPLETE --no-paginate --output text)) 
 
             aws cloudformation deploy \
             --template-file .circleci/files/cloudfront.yml \
-            --stack-name udapeople-${CIRCLE_WORKFLOW_ID:0:7} \
             --parameter-overrides WorkflowID='${CIRCLE_WORKFLOW_ID:0:7}' \
+            --stack-name udapeople-cloudfront \
             --tags project=udapeople
-
 
             echo OldWorkflowID=${OldWorkflowID}
             echo Current Workflow ID: ${CIRCLE_WORKFLOW_ID:0:7}
